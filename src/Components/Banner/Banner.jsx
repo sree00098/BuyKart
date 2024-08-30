@@ -87,7 +87,7 @@ const Banner = () => {
           <div
             key={idx}
             onClick={() => gotToslide(idx)}
-            className={`h-2 w-2 cursor-pointer ${
+            className={`h-2 w-2  px-4 cursor-pointer ${
               currentSlide === idx ? "bg-orange-700" : "bg-white"
             } rounded-full border-none outline-none`}
           ></div>
