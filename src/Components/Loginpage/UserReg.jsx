@@ -1,8 +1,9 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom';
 const UserReg = () => {
+    const navigate =useNavigate();
   return (
-    <div className='flex justify-center items-center h-screen'>
+    <div className='flex justify-center items-center h-screen bg-blue-200'>
       <form className='bg-blue-400 p-[200px] rounded shadow-md '>
         <h2 className='flex items-center justify-center text-normal '>Login Form</h2>
         <div className='mb-2'>
@@ -39,7 +40,7 @@ const UserReg = () => {
         </div>
         
         <div className='flex justify-center items-center '>
-        <button className='bg-[#023047] text-white py-2 px-3 rounded-sm text-center cursor-pointer transition-transform duration-300 hover:bg-blue-500 hover:scale-105'>Log In</button>
+        <button className='bg-[#023047] text-white py-2 px-3 rounded-sm text-center cursor-pointer transition-transform duration-300 hover:bg-blue-500 hover:scale-105' onClick={()=>navigate('/log')}>Log In</button>
 
         </div>
 
