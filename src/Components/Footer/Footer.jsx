@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Footer,jsx = () => {
+const Footer = () => {
   return (
     
     <footer className="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
@@ -48,4 +48,4 @@ const Footer,jsx = () => {
   )
 }
 
-export default Footer,jsx
+export default Footer
