@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Card = () => {
+  const navigate = useNavigate();
   const [prod, setProd] = useState([]);
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,7 +25,7 @@ const Card = () => {
     >
       {prod.map((prd, idx) => {
         return (
-          <div className="bg-slate-200 p-4 rounded-lg shadow-md hover:white-md transition-shadow duration-300 cursor-pointer items-center">
+          <div onClick={()=>navigate(`/${prd.id}`)} className="bg-slate-200 p-4 rounded-lg shadow-md hover:white-md transition-shadow duration-300 cursor-pointer items-center">
             <img
               src={prd.image}
               alt={prd.title}

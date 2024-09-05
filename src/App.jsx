@@ -7,6 +7,7 @@ import Footer from "./Components/Footer/Footer";
 import Login from "./Components/Loginpage/Login";
 import UserReg from "./Components/Loginpage/UserReg";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ProductPage from "./Components/ProductPage/ProductPage";
 
 const App = () => {
   return (
@@ -24,6 +25,12 @@ const App = () => {
           </>
         }
       />
+      <Route path=":id" element={
+        <ProductPage/>
+      }>
+        
+        
+      </Route>
        
       <Route path="/log" element={<Login />} />
       <Route path="/register" element={<UserReg />} />
