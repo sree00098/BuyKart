@@ -17,7 +17,7 @@ const ProductPage = () => {
       }
     };
     fetchProducts();
-  }, [id]); // Add 'id' as a dependency
+  }, [id]); 
 
   return (
     <div className="grid grid-cols-5 grid-rows-5 gap-4">
