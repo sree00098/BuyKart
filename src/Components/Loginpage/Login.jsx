@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../Firebase/Firebase.js';
 import welcome from "../../assets/login/Art.png"
+import email from "../../assets/login/email.png"
 const Login = () => {
   const navigate = useNavigate();
   const [loginEmail,setLoginEmail] =useState("");
@@ -43,9 +44,10 @@ const Login = () => {
         <label className='block mb-1 text-white' htmlFor='email'>
           Email:
         </label>
+        <img src={email} alt="" className='absolute my-4' />
         <input 
           type="email" 
-          className='w-full p-2 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500' 
+          className='realtive w-full p-2 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500' 
           onChange={(e) => setLoginEmail(e.target.value)} 
         />
       </div>
