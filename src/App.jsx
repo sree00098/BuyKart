@@ -8,6 +8,7 @@ import Login from "./Components/Loginpage/Login";
 import UserReg from "./Components/Loginpage/UserReg";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProductPage from "./Components/ProductPage/ProductPage";
+import Cart from "./Components/Cart/Cart";
 
 const App = () => {
   return (
@@ -25,15 +26,12 @@ const App = () => {
           </>
         }
       />
-      <Route path=":id" element={
-        <ProductPage/>
-      }>
-        
-        
-      </Route>
+      <Route path=":id" element={<ProductPage/>}></Route>
+      <Route path="/cart" element={<> <Cart/></>}></Route>  
        
       <Route path="/log" element={<Login />} />
       <Route path="/register" element={<UserReg />} />
+      
     </Routes>
   </Router>
   );

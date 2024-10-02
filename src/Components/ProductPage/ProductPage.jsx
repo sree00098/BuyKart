@@ -1,9 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { auth } from '../../Firebase/Firebase';
+import { getAuth } from 'firebase/auth';
+import { doc , addDoc , collection } from 'firebase/firestore';
+import {db} from '../../Firebase/Firebase'
+
 
 const ProductPage = () => {
+  const navigate = useNavigate();
   const [prod, setProd] = useState({});
   const { id } = useParams();
+  const auth = getAuth()
+  const user = auth.currentUser
+  function addtoCart(){
+    if(user){
+    handleCart(prod)}
+    else{
+      navigate('/log');
+    }
+
+  }
+
+  const handleCart = async () => {
+   
+    
+    if (user) {
+      try {
+        const cartCollection = doc(db, 'Cart', user.uid); // user id also added
+        const cartItemsRef = collection(cartCollection, 'CartItems');
+
+        // Changed `product` to `prod` to match your state variable
+        await addDoc(cartItemsRef, {
+          pId: prod.id, // Updated to use `prod` instead of `product`
+          pName: prod.title,
+          price: prod.price,
+          imageUrl: prod.image,
+        });
+        console.log("Product Added Successfully");
+      } catch (error) {
+        console.error("Error Adding product:", error); // Added error logging for more clarity
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -31,9 +69,9 @@ const ProductPage = () => {
           
           </div>
           <div className="col-start-2 row-start-2 ">
-            <button  className=' rounded-md bg-blue-200 h-20  w-[220px] shadow-lg'>Add To Cart</button>
+            <button onClick={handleCart} className=' rounded-md bg-blue-200 h-20  w-[220px] shadow-lg'>Add To Cart</button>
           </div>
-          <div className="col-start-3 row-start-1 my-2">{prod.title}</div>
+          <div className="col-start-3 row-start-1 ">{prod.title}</div>
           <div className="row-start-2">${prod.price}</div>
           <div className="col-start-3 row-start-3">{prod.rating?.rate}</div>
         </>
